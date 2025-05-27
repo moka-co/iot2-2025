@@ -41,7 +41,7 @@ public class Producer
         String progressAnimation = "|/-\\";
 
 
-        BufferedReader reader = new BufferedReader(new FileReader("/data/RandomEnglishSentences.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader("data/RandomEnglishSentences.txt"));
         String line = reader.readLine();
         int i=0;
         while ( line != null ) {
