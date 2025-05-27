@@ -40,6 +40,14 @@
         <artifactId>maven-shade-plugin</artifactId>
         <version>2.3</version>
         <configuration>
+          <transformers>
+            <!-- Keep us from getting a can't overwrite file error -->
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer"/>
+            <!-- main class so it is executable -->
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+              <mainClass>producerconsumerstreaming.Run</mainClass>
+            </transformer>
+          </transformers>
           <!-- Keep us from getting a bad signature error -->
           <filters>
             <filter>
