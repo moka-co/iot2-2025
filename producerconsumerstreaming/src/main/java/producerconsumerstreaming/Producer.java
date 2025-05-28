@@ -34,15 +34,14 @@ public class Producer
         // specify the protocol for Domain Joined clusters
         //properties.setProperty(CommonClientConfigs.SECURITY_PROTOCOL_CONFIG, "SASL_PLAINTEXT");
 
-        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
-
         String progressAnimation = "|/-\\";
 
+        KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
         BufferedReader reader = new BufferedReader(new FileReader("classes/RandomEnglishSentences.txt"));
         String line = reader.readLine();
         int i=0;
-        while ( (line = reader.readLine()) != null && i < 100 ) {
+        while ( line != null && i < 100 ) {
 	        System.out.println(line);
 	        line = reader.readLine();
             try {
