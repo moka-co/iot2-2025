@@ -36,15 +36,13 @@ public class Producer
 
         KafkaProducer<String, String> producer = new KafkaProducer<>(properties);
 
-        // So we can generate random sentences
-        Random random = new Random();
         String progressAnimation = "|/-\\";
 
 
         BufferedReader reader = new BufferedReader(new FileReader("classes/RandomEnglishSentences.txt"));
         String line = reader.readLine();
         int i=0;
-        while ( line != null ) {
+        while ( (line = reader.readLine()) != null && i < 100 ) {
 	        System.out.println(line);
 	        line = reader.readLine();
             try {
@@ -58,14 +56,8 @@ public class Producer
             System.out.write(progressBar.getBytes());
         }
 
-
-        String[] sentences = new String[] {
-                "the cow jumped over the moon",
-                "an apple a day keeps the doctor away",
-                "four score and seven years ago",
-                "snow white and the seven dwarfs",
-                "i am at two with nature"
-        };
-
+        reader.close();
+        producer.close();
+    
     }
 }
